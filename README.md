@@ -7,16 +7,6 @@ MyShoppingList ist eine Web-Anwendung, mit der Nutzer Produkte an einem zentrale
 - Speicherung von Produktinfos (Preis, URL und Kaufstatus)
 - Übersicht über geplante und bereits gekaufte Produkte
 
-## Geplante Erweiterungen
-
-- Hinzufügen, Bearbeiten und Löschen von Items
-- Speicherung der Daten in einer Datenbank
-
-Optional geplante Features:
-- Implementierung eines Ausgaben-Trackers, der die Ausgaben pro Kategorie sowie insgesamt berechnet
-- Übersicht über monatliche Ausgaben (z. B. für Lebensmittel, Beauty etc.)
-
 ## Aktueller Stand
-
 Aktuell implementiert die Anwendung eine GET-Route (`/items`), die eine Liste von Beispiel-Items zurückgibt.
 Weitere Funktionen wie z.B. das Erstellen, Löschen und Speichern von Items werden im Verlauf des Projekts ergänzt.

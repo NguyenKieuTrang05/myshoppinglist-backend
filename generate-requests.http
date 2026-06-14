@@ -1,0 +1,19 @@
+### POST neues Item
+POST http://localhost:8080/item
+Content-Type: application/json
+
+{
+  "name": "Sneaker",
+  "category": "Schuhe",
+  "amount": "1 Paar",
+  "shop": "Nike",
+  "url": "https://shop.de/nike",
+  "price": 89.99,
+  "priority": "hoch",
+  "status": "Zu kaufen",
+  "purchased": false
+
+}
+
+### GET alle Items
+GET http://localhost:8080/item

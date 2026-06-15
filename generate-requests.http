@@ -14,6 +14,32 @@ Content-Type: application/json
   "purchased": false
 
 }
+### Item 2
 
+POST http://localhost:8080/item
+
+Content-Type: application/json
+
+{
+
+  "name": "MacBook",
+
+  "category": "Elektronik",
+
+  "amount": "1 Stück",
+
+  "shop": "Apple",
+
+  "url": "https://apple.com",
+
+  "price": 1499.99,
+
+  "priority": "hoch",
+
+  "status": "Zu kaufen",
+
+  "purchased": false
+
+}
 ### GET alle Items
 GET http://localhost:8080/item

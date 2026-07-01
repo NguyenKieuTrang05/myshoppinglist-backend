@@ -43,3 +43,55 @@ Content-Type: application/json
 }
 ### GET alle Items
 GET http://localhost:8080/item
+
+### GET alle Items
+GET http://localhost:8080/item
+
+
+### POST neue ShoppingList
+POST http://localhost:8080/shoppinglist
+Content-Type: application/json
+
+{
+  "emoji": "🛒",
+  "name": "REWE",
+  "category": "Lebensmittel"
+}
+
+
+### GET alle ShoppingLists
+GET http://localhost:8080/shoppinglist
+
+### POST neue ShoppingList
+POST http://localhost:8080/shoppinglist
+Content-Type: application/json
+
+{
+  "emoji": "cart",
+  "name": "DM",
+  "category": "Drogerie"
+}
+### GET alle ShoppingLists
+GET http://localhost:8080/shoppinglist
+
+
+### POST neues Item für DM
+POST http://localhost:8080/item
+Content-Type: application/json
+
+{
+  "name": "Shampoo",
+  "category": "Drogerie",
+  "amount": "1 Stück",
+  "shop": "DM",
+  "url": "",
+  "price": 2.99,
+  "priority": "mittel",
+  "status": "Zu kaufen",
+  "purchased": false,
+  "shoppingList": {
+    "id": 4
+  }
+}
+### GET Items von ShoppingList 4
+GET http://localhost:8080/item/shoppinglist/4

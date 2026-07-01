@@ -9,6 +9,8 @@ public class ShoppingListController {
 
     @Autowired
     private ShoppingListService shoppingListService;
+    @Autowired
+    private ItemService itemService;
 
     @GetMapping
     public Iterable<ShoppingList> getAllShoppingList() {
@@ -18,6 +20,10 @@ public class ShoppingListController {
     @GetMapping("/{id}")
     public ShoppingList getShoppingListById(@PathVariable Long id) {
         return shoppingListService.getById(id).orElseThrow();
+    }
+    @GetMapping("/{id}/items")
+    public Iterable<Item> getItemsFromShoppingList(@PathVariable Long id) {
+        return itemService.getByShoppingListId(id);
     }
 
     @PostMapping

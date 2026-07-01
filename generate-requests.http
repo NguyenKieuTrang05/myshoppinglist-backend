@@ -1,81 +1,31 @@
-### POST neues Item
-POST http://localhost:8080/item
-Content-Type: application/json
+### Alle ShoppingLists
+GET http://localhost:8080/shoppinglist
 
-{
-  "name": "Sneaker",
-  "category": "Schuhe",
-  "amount": "1 Paar",
-  "shop": "Nike",
-  "url": "https://shop.de/nike",
-  "price": 89.99,
-  "priority": "hoch",
-  "status": "Zu kaufen",
-  "purchased": false
+###
 
-}
-### Item 2
-
-POST http://localhost:8080/item
-
-Content-Type: application/json
-
-{
-
-  "name": "MacBook",
-
-  "category": "Elektronik",
-
-  "amount": "1 Stück",
-
-  "shop": "Apple",
-
-  "url": "https://apple.com",
-
-  "price": 1499.99,
-
-  "priority": "hoch",
-
-  "status": "Zu kaufen",
-
-  "purchased": false
-
-}
-### GET alle Items
-GET http://localhost:8080/item
-
-### GET alle Items
-GET http://localhost:8080/item
-
-
-### POST neue ShoppingList
+### ShoppingList erstellen
 POST http://localhost:8080/shoppinglist
 Content-Type: application/json
 
 {
   "emoji": "🛒",
-  "name": "REWE",
-  "category": "Lebensmittel"
-}
-
-
-### GET alle ShoppingLists
-GET http://localhost:8080/shoppinglist
-
-### POST neue ShoppingList
-POST http://localhost:8080/shoppinglist
-Content-Type: application/json
-
-{
-  "emoji": "cart",
   "name": "DM",
   "category": "Drogerie"
 }
-### GET alle ShoppingLists
-GET http://localhost:8080/shoppinglist
 
+###
 
-### POST neues Item für DM
+### ShoppingList nach ID
+GET http://localhost:8080/shoppinglist/1
+
+###
+
+### Items einer ShoppingList
+GET http://localhost:8080/shoppinglist/1/items
+
+###
+
+### Item erstellen
 POST http://localhost:8080/item
 Content-Type: application/json
 
@@ -90,8 +40,6 @@ Content-Type: application/json
   "status": "Zu kaufen",
   "purchased": false,
   "shoppingList": {
-    "id": 4
+    "id": 1
   }
 }
-### GET Items von ShoppingList 4
-GET http://localhost:8080/item/shoppinglist/4

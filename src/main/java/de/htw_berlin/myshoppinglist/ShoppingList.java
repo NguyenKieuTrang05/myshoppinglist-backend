@@ -18,7 +18,7 @@ public class ShoppingList {
     private LocalDate createdAt = LocalDate.now();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "shoppingList")
+    @OneToMany(mappedBy = "shoppingList", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> items;
 
     public ShoppingList() {

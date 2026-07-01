@@ -1,27 +1,10 @@
-### Alle ShoppingLists
-GET http://localhost:8080/shoppinglist
-
-###
-
-### ShoppingList erstellen
-POST http://localhost:8080/shoppinglist
-Content-Type: application/json
-
-{
-  "emoji": "🛒",
-  "name": "DM",
-  "category": "Drogerie"
-}
-
-###
-
 ### ShoppingList nach ID
-GET http://localhost:8080/shoppinglist/1
+GET http://localhost:8080/shoppinglist/4
 
 ###
 
 ### Items einer ShoppingList
-GET http://localhost:8080/shoppinglist/1/items
+GET http://localhost:8080/shoppinglist/4/items
 
 ###
 
@@ -40,6 +23,6 @@ Content-Type: application/json
   "status": "Zu kaufen",
   "purchased": false,
   "shoppingList": {
-    "id": 1
+    "id": 4
   }
 }

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface FriendshipRepository extends CrudRepository<Friendship, Long> {
     List<Friendship> findByUserId(String userId);
+    boolean existsByUserIdAndFriendIdAndStatus(String userId, String friendId, FriendshipStatus status);
 }

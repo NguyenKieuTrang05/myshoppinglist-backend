@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface SharedShoppingListRepository extends CrudRepository<SharedShoppingList, Long> {
     List<SharedShoppingList> findByUserId(String userId);
+    boolean existsByShoppingListIdAndUserId(Long shoppingListId, String userId);
 }

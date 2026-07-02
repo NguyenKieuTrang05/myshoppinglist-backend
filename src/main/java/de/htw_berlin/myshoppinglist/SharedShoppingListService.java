@@ -22,7 +22,7 @@ public class SharedShoppingListService {
         String friendId = sharedShoppingList.getUser().getId();
 
         if (ownerId.equals(friendId)) {
-            throw new IllegalStateException("Owner cannot share the list with themselves.");
+            throw new BadRequestException("Owner cannot share the list with themselves.");
         }
 
         boolean areFriends = friendshipRepository.existsByUserIdAndFriendIdAndStatus(
@@ -32,7 +32,7 @@ public class SharedShoppingListService {
         );
 
         if (!areFriends) {
-            throw new IllegalStateException("Shopping list can only be shared with accepted friends.");
+            throw new BadRequestException("Shopping list can only be shared with accepted friends.");
         }
         if (sharedRepository.existsByShoppingListIdAndUserId(
                 sharedShoppingList.getShoppingList().getId(),

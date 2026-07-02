@@ -20,6 +20,21 @@ public class FriendshipService {
     }
 
     public Friendship save(Friendship friendship) {
+        String userId = friendship.getUser().getId();
+        String friendId = friendship.getFriend().getId();
+
+        if (userId.equals(friendId)) {
+            throw new BadRequestException("User cannot add themselves as a friend.");
+        }
+
+        boolean exists =
+                friendshipRepository.existsByUserIdAndFriendId(userId, friendId) ||
+                        friendshipRepository.existsByUserIdAndFriendId(friendId, userId);
+
+        if (exists) {
+            throw new BadRequestException("Friend request already exists.");
+        }
+
         friendship.setStatus(FriendshipStatus.PENDING);
         return friendshipRepository.save(friendship);
     }
@@ -31,7 +46,7 @@ public class FriendshipService {
         Friendship friendship = friendshipRepository.findById(id).orElseThrow();
 
         if (friendship.getStatus() != FriendshipStatus.PENDING) {
-            throw new IllegalStateException("Friend request already processed.");
+            throw new BadRequestException("Friend request already processed.");
         }
         friendship.setStatus(FriendshipStatus.ACCEPTED);
         return friendshipRepository.save(friendship);
@@ -41,7 +56,7 @@ public class FriendshipService {
         Friendship friendship = friendshipRepository.findById(id).orElseThrow();
 
         if (friendship.getStatus() != FriendshipStatus.PENDING) {
-            throw new IllegalStateException("Friend request already processed.");
+            throw new BadRequestException("Friend request already processed.");
         }
 
         friendship.setStatus(FriendshipStatus.DECLINED);

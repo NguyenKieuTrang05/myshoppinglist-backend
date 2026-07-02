@@ -149,3 +149,17 @@ Content-Type: application/json
 }
 ### Alle Freundschaften
 GET http://localhost:8080/shared-shoppinglists
+
+### Shoppinglist
+GET http://localhost:8080/shoppinglist
+Authorization: Bearer <ACCESS_TOKEN>
+###
+POST http://localhost:8080/shoppinglist
+Authorization: Bearer <ACCESS_TOKEN>
+Content-Type: application/json
+
+{
+  "emoji": "🛒",
+  "name": "Edeka",
+  "category": "Lebensmittel"
+}

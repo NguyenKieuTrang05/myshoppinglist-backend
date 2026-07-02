@@ -6,6 +6,14 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface FriendshipRepository extends CrudRepository<Friendship, Long> {
+
     List<Friendship> findByUserId(String userId);
-    boolean existsByUserIdAndFriendIdAndStatus(String userId, String friendId, FriendshipStatus status);
+
+    boolean existsByUserIdAndFriendId(String userId, String friendId);
+
+    boolean existsByUserIdAndFriendIdAndStatus(
+            String userId,
+            String friendId,
+            FriendshipStatus status
+    );
 }

@@ -17,6 +17,10 @@ public class ShoppingList {
     private String category;
     private LocalDate createdAt = LocalDate.now();
 
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private User owner;
+
     @JsonIgnore
     @OneToMany(mappedBy = "shoppingList", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> items;
@@ -49,5 +53,8 @@ public class ShoppingList {
 
     public List<Item> getItems() { return items; }
     public void setItems(List<Item> items) { this.items = items; }
+
+    public User getOwner() { return owner; }
+    public void setOwner(User owner) { this.owner = owner; }
 
 }

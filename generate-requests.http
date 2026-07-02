@@ -26,3 +26,93 @@ Content-Type: application/json
     "id": 4
   }
 }
+###
+
+### Alle geteilten Listen
+GET http://localhost:8080/shared-shoppinglists
+
+###
+
+### User erstellen
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "id": "auth0|testuser1",
+  "email": "test1@example.com",
+  "name": "Test User 1"
+}
+###
+
+### ShoppingList mit User teilen
+POST http://localhost:8080/shared-shoppinglists
+Content-Type: application/json
+
+{
+  "shoppingList": {
+    "id": 4
+  },
+  "user": {
+    "id": "auth0|testuser1"
+  }
+}
+###
+
+### Alle geteilten Listen
+GET http://localhost:8080/shared-shoppinglists
+
+### Geteilte Listen von User
+GET http://localhost:8080/shared-shoppinglists/user/auth0%7Ctestuser1
+
+### Zweiten User erstellen
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "id": "auth0|testuser2",
+  "email": "test2@example.com",
+  "name": "Test User 2"
+}
+
+###
+
+### Freundschaftsanfrage erstellen
+POST http://localhost:8080/friendships
+Content-Type: application/json
+
+{
+  "user": {
+    "id": "auth0|testuser1"
+  },
+  "friend": {
+    "id": "auth0|testuser2"
+  }
+}
+
+###
+
+### Alle Freundschaften
+GET http://localhost:8080/friendships
+
+### Freundschaft annehmen
+PUT http://localhost:8080/friendships/1/accept
+
+###
+
+### Freundschaft ablehnen
+PUT http://localhost:8080/friendships/1/decline
+
+### Neue Freundschaftsanfrage
+POST http://localhost:8080/friendships
+Content-Type: application/json
+
+{
+  "user": {
+    "id": "auth0|testuser1"
+  },
+  "friend": {
+    "id": "auth0|testuser2"
+  }
+}
+### Freundschaft annehmen
+PUT http://localhost:8080/friendships/2/accept

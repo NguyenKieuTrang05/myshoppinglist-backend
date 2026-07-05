@@ -17,6 +17,9 @@ public class ShoppingList {
     private String category;
     private LocalDate createdAt = LocalDate.now();
 
+    @Column(nullable = true)
+    private Boolean favorite = false;
+
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private User owner;
@@ -57,4 +60,9 @@ public class ShoppingList {
     public User getOwner() { return owner; }
     public void setOwner(User owner) { this.owner = owner; }
 
+    public Boolean getFavorite() { return favorite; }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
+    }
 }

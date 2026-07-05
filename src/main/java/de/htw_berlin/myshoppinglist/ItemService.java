@@ -6,12 +6,16 @@ import java.util.Optional;
 
 @Service
 public class ItemService {
-    @Autowired
-    private ItemRepository repo;
+    private final ItemRepository repo;
+
+    public ItemService(ItemRepository repo) {
+        this.repo = repo;
+    }
 
     public Iterable<Item> getAll() {
         return repo.findAll();
     }
+
     public Optional<Item> getById(Long id) {
         return repo.findById(id);
     }
@@ -23,6 +27,7 @@ public class ItemService {
     public Item save(Item item) {
         return repo.save(item);
     }
+
     public void delete(Long id) {
         repo.deleteById(id);
     }

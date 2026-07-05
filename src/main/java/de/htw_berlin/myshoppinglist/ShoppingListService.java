@@ -27,23 +27,30 @@ public class ShoppingListService {
     public Optional<ShoppingList> getById(Long id) {
         return shoppingListRepo.findById(id);
     }
+    public Iterable<ShoppingList> getByUserId(String userId) {
+        return shoppingListRepo.findByOwnerId(userId);
+    }
 
     public ShoppingList save(ShoppingList shoppingList) {
-        String userId = currentUserService.getCurrentUserId();
+        if (shoppingList.getOwner() != null && shoppingList.getOwner().getId() != null) {
+            User owner = userRepository.findById(shoppingList.getOwner().getId())
+                    .orElseGet(() -> userRepository.save(shoppingList.getOwner()));
 
-        User owner = userRepository.findById(userId)
-                .orElseGet(() -> {
-                    User newUser = new User();
-                    newUser.setId(userId);
-                    return userRepository.save(newUser);
-                });
-
-        shoppingList.setOwner(owner);
+            shoppingList.setOwner(owner);
+        }
 
         return shoppingListRepo.save(shoppingList);
+    }
+    public ShoppingList toggleFavorite(Long id) {
+        ShoppingList list = shoppingListRepo.findById(id).orElseThrow();
+
+        list.setFavorite(!Boolean.TRUE.equals(list.getFavorite()));
+
+        return shoppingListRepo.save(list);
     }
 
     public void delete(Long id) {
         shoppingListRepo.deleteById(id);
     }
+
 }

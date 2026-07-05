@@ -1,7 +1,5 @@
 package de.htw_berlin.myshoppinglist;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -21,7 +19,7 @@ public class Item {
     private String status;
     private boolean purchased;
 
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "shopping_list_id")
     private ShoppingList shoppingList;

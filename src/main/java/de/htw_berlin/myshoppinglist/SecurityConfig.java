@@ -11,19 +11,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
         http
                 .csrf(csrf -> csrf.disable())
+                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/shoppinglist/**").authenticated()
-                        .requestMatchers("/item/**").authenticated()
-                        .requestMatchers("/users/**").authenticated()
-                        .requestMatchers("/shared-shoppinglists/**").authenticated()
-                        .requestMatchers("/friendships/**").authenticated()
                         .anyRequest().permitAll()
-                )
-                .oauth2ResourceServer(oauth2 ->
-                        oauth2.jwt(Customizer.withDefaults())
                 );
 
         return http.build();

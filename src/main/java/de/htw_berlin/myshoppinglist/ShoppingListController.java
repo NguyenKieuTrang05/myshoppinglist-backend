@@ -17,6 +17,11 @@ public class ShoppingListController {
         return shoppingListService.getAll();
     }
 
+    @GetMapping("/user/{userId}")
+    public Iterable<ShoppingList> getShoppingListsByUser(@PathVariable String userId) {
+        return shoppingListService.getByUserId(userId);
+    }
+
     @GetMapping("/{id}")
     public ShoppingList getShoppingListById(@PathVariable Long id) {
         return shoppingListService.getById(id).orElseThrow();
@@ -35,6 +40,10 @@ public class ShoppingListController {
     public ShoppingList updateShoppingList(@PathVariable Long id, @RequestBody ShoppingList shoppingList) {
         shoppingList.setId(id);
         return shoppingListService.save(shoppingList);
+    }
+    @PatchMapping("/{id}/favorite")
+    public ShoppingList toggleFavorite(@PathVariable Long id) {
+        return shoppingListService.toggleFavorite(id);
     }
 
     @DeleteMapping("/{id}")
